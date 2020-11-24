@@ -7,12 +7,33 @@ public class Main {
     public static void main(String[] args) {
 
 
-//        sponsorLeagues("1,1", 5, 20000);
-//        sponsorLeagues("1,1", 5, 1000);
-//        sponsorLeagues("1,1", 5, 8000);
+        sponsorLeagues("1,1", 5, 20000);
+        sponsorLeagues("1,1", 5, 1000);
+        sponsorLeagues("1,1", 5, 8000);
     }
 
+    Scanner scanner = new Scanner(System.in);
 
+
+    public static void sponsorLeagues(String coords, int radius, int budget) {
+        List<League> acceptedLeagues = findLeagues(coords, radius, budget);
+        System.out.println(acceptedLeagues.toString());
+
+        int totalSpend = 0;
+
+
+        for (League acceptedLeague : acceptedLeagues) {
+            if (budget - acceptedLeague.getPrice() <= 0) {
+                System.out.println("Your budget cannot sponsor a league.");
+            }
+            System.out.println("Name:" + acceptedLeague.getName());
+            System.out.println("Price:" + acceptedLeague.getPrice());
+            totalSpend = totalSpend + acceptedLeague.getPrice();
+        }
+        System.out.println("--------------------------------------");
+        System.out.println("Total Budget Used: " + totalSpend);
+        System.out.println("Total Budget Remaining: " + (budget - totalSpend));
+    }
 
     public static List<League> findLeagues(String coords, int radius, int budget) {
 
@@ -38,6 +59,5 @@ public class Main {
         }
         return acceptedLeagues;
     }
-
 
 }
