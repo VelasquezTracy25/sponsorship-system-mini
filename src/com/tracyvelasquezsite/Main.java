@@ -4,23 +4,35 @@ import java.util.*;
 
 public class Main {
 
+    public static List<League> leagues = new ArrayList<>();
+
     public static void main(String[] args) {
 
+        leagues.add(new League("The Wyld Stallions", "1,1", 4500));
+        leagues.add(new League("Team Zoidberg", "1,1", 6000));
+        leagues.add(new League("The Zoomers", "1,1", 1500));
+        leagues.add(new League("North Horseburg Little League", "1,1", 3500));
+        leagues.add(new League("The Duloc Ogres", "1,1", 2500));
+
+        addLeague("The Losers", "1,1", 2200);
 
         sponsorLeagues("1,1", 5, 20000);
         sponsorLeagues("1,1", 5, 1000);
         sponsorLeagues("1,1", 5, 8000);
     }
 
-    Scanner scanner = new Scanner(System.in);
 
+    public static void addLeague(String name, String coords, int price){
+        leagues.add(new League(name, coords, price));
+        for (League league : leagues) {
+            System.out.println(league.getName());
+        }
+    }
 
     public static void sponsorLeagues(String coords, int radius, int budget) {
         List<League> acceptedLeagues = findLeagues(coords, radius, budget);
-        System.out.println(acceptedLeagues.toString());
 
         int totalSpend = 0;
-
 
         for (League acceptedLeague : acceptedLeagues) {
             if (budget - acceptedLeague.getPrice() <= 0) {
@@ -37,17 +49,8 @@ public class Main {
 
     public static List<League> findLeagues(String coords, int radius, int budget) {
 
-        List<League> leagues = new ArrayList<>();
-        leagues.add(new League("The Wyld Stallions", "1,1", 5, 4500));
-        leagues.add(new League("Team Zoidberg", "1,1", 5, 6000));
-        leagues.add(new League("The Zoomers", "1,1", 5, 1500));
-        leagues.add(new League("North Horseburg Little League", "1,1", 5, 3500));
-        leagues.add(new League("The Duloc Ogres", "1,1", 5, 2500));
         List<League> acceptedLeagues = new ArrayList<>();
-
         Collections.sort(leagues, Comparator.comparingInt(League::getPrice));
-
-        System.out.println(leagues);
 
         for (League league : leagues) {
             if (budget - league.getPrice() <= 0)

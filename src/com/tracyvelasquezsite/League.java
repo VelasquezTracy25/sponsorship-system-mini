@@ -4,13 +4,11 @@ public class League{
 
     public String name;
     public String coords;
-    public int radius;
     public int price;
 
-    public League(String name, String coords, int radius, int price) {
+    public League(String name, String coords, int price) {
         this.name = name;
         this.coords = coords;
-        this.radius = radius;
         this.price = price;
     }
 
@@ -28,14 +26,6 @@ public class League{
 
     public void setCoords(String coords) {
         this.coords = coords;
-    }
-
-    public int getRadius() {
-        return radius;
-    }
-
-    public void setRadius(int radius) {
-        this.radius = radius;
     }
 
     public int getPrice() {
