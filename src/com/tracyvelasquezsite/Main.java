@@ -24,6 +24,10 @@ public class Main {
         leagues.add(new League("The Duloc Ogres", "1,1", 5, 2500));
         List<League> acceptedLeagues = new ArrayList<>();
 
+        Collections.sort(leagues, Comparator.comparingInt(League::getPrice));
+
+        System.out.println(leagues);
+
         for (League league : leagues) {
             if (budget - league.getPrice() <= 0)
                 return acceptedLeagues;
