@@ -1,4 +1,5 @@
 # Mini Sponsorship System
+This app serves as a CLA version of https://github.com/VelasquezTracy25/sponsorship-system. 
 
 This system will accept a league submission in form of function parameters and write them to an existing list.
 
