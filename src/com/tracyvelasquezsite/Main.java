@@ -41,11 +41,13 @@ public class Main {
 
         int totalSpend = 0;
 
-        System.out.println("--------------------------------------");
+
         if (acceptedLeagues.size() <= 0) {
+            System.out.println("--------------------------------------");
             System.out.println("Your budget of $" + budget + " cannot be used to sponsor a league.");
             System.out.println("--------------------------------------");
         } else {
+            System.out.println("--------------------------------------");
             for (League acceptedLeague : acceptedLeagues) {
                 System.out.println("Name:" + acceptedLeague.getName());
                 System.out.println("Price: $" + acceptedLeague.getPrice());
