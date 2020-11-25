@@ -20,13 +20,14 @@ public class Main {
         // Should return The Zoomers, The Duloc Ogres, and The North Horseburg Little League
 
         addLeague("The Losers", "1,1", 2200);
-        addLeague("The Boys", "1,1", 2200);
-        addLeague("The Mighty Ducks", "1,1", 2200);
+        addLeague("The Boys", "1,1", 1100);
+        addLeague("The Mighty Ducks", "1,1", 5600);
 
-        returnAllLeagues(); //returns list of 8 leagues
+        returnAllLeagues(); //returns list of 8 leagues - minimum price $1100
 
-        sponsorLeagues("1,1", 5, 15000); //
-        sponsorLeagues("1,1", 5, 1000);
+        sponsorLeagues("1,1", 5, 15000);
+        sponsorLeagues("1,1", 5, 1000); //should return "cannot sponsor" message
+        sponsorLeagues("1,1", 5, 0); //should return "cannot sponsor" message
         sponsorLeagues("1,1", 5, 10000);
     }
 
@@ -41,18 +42,20 @@ public class Main {
         int totalSpend = 0;
 
         System.out.println("--------------------------------------");
-        for (League acceptedLeague : acceptedLeagues) {
-            if (budget - acceptedLeague.getPrice() <= 0) {
-                System.out.println("Your budget cannot be used to sponsor a league.");
+        if (acceptedLeagues.size() <= 0) {
+            System.out.println("Your budget of $" + budget + " cannot be used to sponsor a league.");
+            System.out.println("--------------------------------------");
+        } else {
+            for (League acceptedLeague : acceptedLeagues) {
+                System.out.println("Name:" + acceptedLeague.getName());
+                System.out.println("Price: $" + acceptedLeague.getPrice());
+                totalSpend = totalSpend + acceptedLeague.getPrice();
             }
-            System.out.println("Name:" + acceptedLeague.getName());
-            System.out.println("Price: $" + acceptedLeague.getPrice());
-            totalSpend = totalSpend + acceptedLeague.getPrice();
+            System.out.println("Total Budget: $" + budget);
+            System.out.println("Total Budget Used: $" + totalSpend);
+            System.out.println("Total Budget Remaining: $" + (budget - totalSpend));
+            System.out.println("--------------------------------------");
         }
-        System.out.println("Total Budget: $" + budget);
-        System.out.println("Total Budget Used: $" + totalSpend);
-        System.out.println("Total Budget Remaining: $" + (budget - totalSpend));
-        System.out.println("--------------------------------------");
     }
 
     public static List<League> findLeagues(String coords, int radius, int budget) {
